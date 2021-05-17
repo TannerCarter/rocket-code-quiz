@@ -151,7 +151,7 @@ $(function () {
     end.removeClass("active");
     start.removeClass("fade");
     curentQuestion = 0;
-    time.text(0);
+    time.text(65);
     timeCount = questions.length * 20;
   });
 });
