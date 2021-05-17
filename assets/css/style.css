@@ -1,3 +1,11 @@
+/* Page Styles */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+/* Color Styles */
 :root {
   --primary-color: white;
   --secondary-color: linear-gradient(
@@ -7,15 +15,18 @@
   );
   --grey-color: #d3d3d3;
 }
+/* body Styles */
 body {
   background: var(--secondary-color);
   margin: 0;
 }
+/* Timer Styles */
 .timer {
   font-weight: bold;
   border-bottom: 3px black solid;
   font-size: 20px;
 }
+/*  Styles */
 h1 {
   border-bottom: 3px dashed rgba(152, 152, 152, 1);
   font-size: 3em;
@@ -28,7 +39,7 @@ hr {
   height: 0;
   overflow: visible;
 }
-
+/*  Styles */
 pre {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
@@ -80,6 +91,7 @@ sup {
 img {
   border-style: none;
 }
+/* Button Styles */
 button,
 input,
 optgroup,
@@ -125,7 +137,7 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
+/* End Button Styles */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
@@ -198,17 +210,10 @@ template {
   display: none;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  outline: none;
-}
-
 body,
 html {
   scroll-behavior: smooth;
 }
-
 body {
   color: #1c1c1c;
   font-family: Arial, Helvetica, sans-serif;
@@ -218,7 +223,7 @@ a {
   color: #1c1c1c;
   text-decoration: none;
 }
-
+/* Header Styles */
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -247,13 +252,17 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
+/* Header End Styles */
 
+/* Container Styles */
 .container {
   max-width: 1140px;
   margin: 50px auto;
   padding: 10px 15px;
 }
+/* Container Styles */
 
+/* Start Styles */
 .start {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -295,7 +304,9 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
+/* End Start Styles */
 
+/* Question Styles */
 .question {
   display: none;
   max-width: 500px;
@@ -351,7 +362,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
+/* End Question Styles */
 
+/* End Styles */
 .end {
   display: none;
   max-width: 400px;
@@ -406,7 +419,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
+/* End Styles */
 
+/* History Styles */
 .history {
   display: none;
 }
@@ -490,11 +505,12 @@ header .score:hover {
   margin-bottom: 10px;
 }
 
+.history-box .buttons button:nth-of-type(1) {
+  margin-right: 25px;
+}
+
 .history-box .buttons button:hover {
   font-weight: bold;
   background: blue;
 }
-
-.history-box .buttons button:nth-of-type(1) {
-  margin-right: 25px;
-}
+/* End History Styles */
