@@ -1,198 +1,157 @@
-const main = document.getElementById("main");
-
-let secondsLeft = 80;
-let scoresDiv = document.getElementById("score");
-let emptyArray = [];
-let storedArray = JSON.parse(window.localStorage.getItem("highScores"));
-
-function setTime() {
-  displayQuestions();
-  letTimeInterval = setInterval(function () {
-    secondLeft--;
-    timer.textContent = "";
-    timer.textContent = "Time: " + secondsLeft;
-    if (secondsLeft <= 0 || questionCount === questions.length) {
-      clearInterval(timerInterval);
-      captureUserScore();
-    }
-  }, 1000);
-}
-
-let score;
-let timer = 80;
-let questionNum = 0;
-let current = {};
-
+//Questions Data/ Info Start
 const questions = [
   {
-    question: " Commonly used data types DO not include:",
+    title: "Arrays in javascript can be used to store ___.",
     choices: [
-      {
-        id: "a",
-        value: "strings",
-      },
-      {
-        id: "b",
-        value: "booleans",
-      },
-      {
-        id: "c",
-        value: "alerts",
-      },
-      {
-        id: "d",
-        value: "numbers",
-      },
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above",
     ],
-    correctResponse: "booleans",
+    answer: "all of the above",
   },
   {
-    question: "Arrays in javascript can be used to store ___.",
-    choices: [
-      {
-        id: "a",
-        value: "numbers and strings",
-      },
-      {
-        id: "b",
-        value: "other arrays",
-      },
-      {
-        id: "c",
-        value: "booleans",
-      },
-      {
-        id: "d",
-        value: "all of the above",
-      },
-    ],
-    correctResponse: "all of the above",
-  },
-  {
-    question:
+    title:
       "String values must be enclosed within ___ when being assigned to variables.",
-    choices: [
-      {
-        id: "a",
-        value: "commas",
-      },
-      {
-        id: "b",
-        value: "quotes",
-      },
-      {
-        id: "c",
-        value: "curly brackets",
-      },
-      {
-        id: "d",
-        value: "parenthesis",
-      },
-    ],
-    correctResponse: "quotes",
+    choices: ["commas", "quotes", "curly brackets", "parenthesis"],
+    answer: "quotes",
+  },
+  {
+    title: "Commonly used data types DO not include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "booleans",
   },
 ];
+//Questions Data/ Info End
 
-function getHomePage() {
-  let div = document.createElement("div");
-  let title = document.createElement("p");
-  title.innerText = "To begin this quiz, please click the start button.";
+//Score board; Time; Information Start
+$(function () {
+  let score = $("#score");
+  let end = $("#end");
+  let time = $("#time");
+  let start = $("#start");
+  let question = $("#question");
+  let startBtn = $("#start-btn");
+  let final = $("#final");
+  let finalSubmit = $("#finalSubmit");
+  let finalInput = $("#finalInput");
+  let timeCount = questions.length * 22;
+  let curentQuestion = 0;
+  let interval;
+  //history Data and Start
+  let history = $("#history");
+  let back = $("#back");
+  let clearHistory = $("#clearHistory");
+  let historyArray = [];
+  localStorage.setItem("score", JSON.stringify([])); //
+  getHistory = () => {
+    $("#score-box").empty();
+    if (localStorage.getItem("score")) {
+      historyArray = JSON.parse(localStorage.getItem("score"));
+      historyArray.sort((a, b) => b.score - a.score);
+    }
+    historyArray.forEach((item, index) => {
+      let itemscore = $(
+        `<div class="score-item">${index + 1}. ${
+          item.name
+        } <span class="s-score">${item.score}</span></div>`
+      );
+      $("#score-box").append(itemscore);
+    });
+  };
 
-  let subTitle = document.createElement("p");
-  subTitle.innerText =
-    "Note: 10 seconds will be reduced from your time, if answered incorrectly.";
+  getHistory();
 
-  let startButton = document.createElement("button");
-  startButton.innerText = "Start Quiz";
+  score.on("click", function () {
+    history.addClass("active");
+  });
 
-  startButton.onclick = onStart;
+  back.on("click", function () {
+    history.removeClass("active");
+  });
 
-  div.append(title);
-  div.append(subTitle);
-  div.append(startButton);
+  clearHistory.on("click", function () {
+    localStorage.setItem("score", JSON.stringify([]));
+    getHistory();
+  });
 
-  return div;
-}
+  //Questions Start
+  function startQuiz() {
+    start.addClass("fade");
+    question.addClass("active");
+    nextQuestion(curentQuestion);
+  }
+  //Next Question
+  function nextQuestion(number) {
+    if (number <= questions.length - 1) {
+      $("#question-title").text(questions[number].title);
+      $("#answer-btn").empty();
 
-function onStart() {
-  clean();
-  showNextQuestion();
-}
-
-function clean() {
-  console.log("Cleaning canvas");
-  if (main.hasChildNodes()) {
-    let childNodes = main.childNodes;
-    for (i = 0; i < childNodes.length; i++) {
-      main.removeChild(childNodes[i]);
+      questions[number].choices.forEach((item, index) => {
+        let answer = $(`<button class="answer">${index + 1}. ${item}</button>`);
+        $("#answer-btn").append(answer);
+      });
+    } else {
+      question.removeClass("active");
+      end.addClass("active");
+      clearInterval(interval);
+      if (timeCount < 0) {
+        time.text(0);
+        final.text(0);
+      } else {
+        final.text(timeCount);
+        time.text(timeCount);
+      }
     }
   }
-}
 
-function handleAnswer(e) {
-  let correctAnswer = current.question.correctResponse;
-  current.answerResult.innerText = `Correct answer is ${correctAnswer}. Answered ${e.target.innerText}`;
-  current.answerResult.hidden = false;
-  current.nextQButton.style.visibility = "visible";
-}
-
-function showNextQuestion() {
-  clean();
-  main.append(nextQuestion());
-}
-
-function nextQuestion() {
-  let div;
-  if (questionNum < questions.length) {
-    div = document.createElement("div");
-    const _question = questions[questionNum];
-    current.question = _question;
-    console.log(_question);
-    let question = document.createElement("p");
-    question.innerText = _question.question;
-    div.append(question);
-
-    for (i = 0; i < _question.choices.length; i++) {
-      let answerChoice = _question.choices[i];
-      let b = document.createElement("button");
-      b.setAttribute("id", answerChoice.id);
-      b.setAttribute("class", "answerChoice");
-      b.innerText = answerChoice.value;
-      b.onclick = handleAnswer;
-      div.append(b);
+  //Answer Start
+  $(document).on("click", ".answer", function () {
+    if (
+      this.innerText.slice(3, this.innerText.length) ===
+      questions[curentQuestion].answer
+    ) {
+    } else {
+      timeCount -= 20;
+      if (timeCount < 0) {
+        time.text(0);
+        final.text(0);
+      }
     }
+    curentQuestion++;
+    nextQuestion(curentQuestion);
+  });
+  startBtn.on("click", function () {
+    startQuiz();
+    interval = setInterval(function () {
+      if (timeCount <= 0) {
+        timeCount = 0;
+        return;
+      }
+      timeCount--;
+      time.text(timeCount);
+    }, 1000);
+  });
 
-    let label = document.createElement("label");
-    label.innerText = "This label should be hidden at first.";
-    label.hidden = true;
-    div.append(label);
-    current.answerResult = label;
+  //Questions end.
 
-    let nextQButton = document.createElement("button");
-    nextQButton.innerText = "Next Question";
-    nextQButton.onclick = nextQuestion;
-    nextQButton.setAttribute("class", "answerChoice");
-    nextQButton.style.visibility = "hidden";
-    nextQButton.onclick = showNextQuestion;
+  //Finish and set as active page
 
-    current.nextQButton = nextQButton;
-
-    div.append(nextQButton);
-
-    questionNum++;
-  } else {
-    div = document.createElement("div");
-    let p = document.createElement("p");
-    p.innerText = "Your final score is";
-    let initial = document.createElement("p");
-    initial.innerText = "Please enter your initials";
-    let input = document.createElement("input");
-    div.append(p);
-    div.append(input);
-    div.append(initial);
-  }
-  return div;
-}
-
-let homePage = getHomePage();
-main.append(homePage);
+  finalSubmit.on("click", function () {
+    if (timeCount < 0) {
+      timeCount = 0;
+    }
+    if (finalInput.val()) {
+      historyArray.push({ name: finalInput.val(), score: timeCount });
+      finalInput.val("");
+      localStorage.setItem("score", JSON.stringify(historyArray));
+      history.addClass("active");
+      getHistory();
+    }
+    end.removeClass("active");
+    start.removeClass("fade");
+    curentQuestion = 0;
+    time.text(0);
+    timeCount = questions.length * 20;
+  });
+});

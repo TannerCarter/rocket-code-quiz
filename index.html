@@ -2,32 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Include Style Sheet-->
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <title>Rocket Code Quiz</title>
+    <!-- Include Style Sheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Include jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
+    <!-- Score and Timer Start -->
     <header>
-      <!-- Highscore and Timer Start -->
-      <button class="score" id="score">View Highscores</button>
-      <div class="timer">Time: <span id="time">80</span></div>
+      <button class="score" id="score">View Leaderboard</button>
+      <div class="timer">Time: <span id="time">65</span></div>
     </header>
-    <!-- Highscore and Timer End -->
+    <!-- Score and Timer End -->
 
-    <!-- Container Start -->
+    <!-- Home Page Start -->
     <div class="container">
       <div class="start" id="start">
         <h1>Rocket Code Quiz</h1>
         <p>
           In order to become a developer for NASA, you must complete this quiz. </br>
-          If you answer incorrectly, a deduction of 10 seconds will take place upon your time to finish the quiz.
+          If you answer incorrectly, a deduction of 20 seconds will be applied.
         </p>
-
-        <button id="start-btn">Start</button>
+        <button id="start-btn">Start Quiz</button>
       </div>
+      <!-- Home Page End -->
 
       <!-- Questions Start -->
       <div class="question" id="question">
@@ -36,24 +36,33 @@
           <div class="question-btn" id="answer-btn"></div>
         </div>
       </div>
-      <!--Questions End -->
+      <!-- Questions End -->
 
-      <!-- End of Questions Page Start -->
+    <!-- End page, Input initials Start -->
       <div class="end" id="end">
-        <div class="title">Blast Off! You have completed the quiz and are ready for take off with NASA.</div>
+        <div class="title">All Done!</div>
         <p>Your final score is <span id="final"></span></p>
         <div class="input">
           Enter initials: <input type="text" id="finalInput" />
           <button id="finalSubmit">Submit</button>
         </div>
       </div>
-      <!-- End of Questions Page Start -->
     </div>
-    <!-- Container End -->
+    <!-- End page, Input initials End -->
 
-    <!-- Link to js file -->
-    <script src="assets/js/script.js"></script>
-    <!-- Added Jquery Support  -->
-    <script src="js/jquery.js"></script>
+    <!-- History, Buttons, Score Start -->
+    <div class="history" id="history">
+      <div class="history-box">
+        <div class="scores">
+          <div class="title">Leaderboard</div>
+          <div class="score-box" id="score-box"></div>
+        </div>
+        <div class="buttons">
+          <button id="back">Go back</button>
+          <button id="clearHistory">Clear history</button>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
