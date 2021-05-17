@@ -1,11 +1,11 @@
-/*  Styles */
+/* Page Styles */
 
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   outline: none;
 }
-/*  Styles */
+/* Color Styles */
 :root {
   --primary-color: white;
   --secondary-color: linear-gradient(
@@ -15,12 +15,12 @@
   );
   --grey-color: #d3d3d3;
 }
-/*  Styles */
+/* body Styles */
 body {
   background: var(--secondary-color);
   margin: 0;
 }
-/*  Styles */
+/* Timer Styles */
 .timer {
   font-weight: bold;
   border-bottom: 3px black solid;
@@ -91,7 +91,7 @@ sup {
 img {
   border-style: none;
 }
-/*  Styles */
+/* Button Styles */
 button,
 input,
 optgroup,
@@ -137,7 +137,7 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-/*  Styles */
+/* End Button Styles */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
@@ -214,7 +214,6 @@ body,
 html {
   scroll-behavior: smooth;
 }
-/*  Styles */
 body {
   color: #1c1c1c;
   font-family: Arial, Helvetica, sans-serif;
@@ -224,7 +223,7 @@ a {
   color: #1c1c1c;
   text-decoration: none;
 }
-/*  Styles */
+/* Header Styles */
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -253,17 +252,17 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
-/*  Styles */
+/* Header End Styles */
 
-/*  Styles */
+/* Container Styles */
 .container {
   max-width: 1140px;
   margin: 50px auto;
   padding: 10px 15px;
 }
-/*  Styles */
+/* Container Styles */
 
-/*  Styles */
+/* Start Styles */
 .start {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,9 +304,9 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
-/*  Styles */
+/* End Start Styles */
 
-/*  Styles */
+/* Question Styles */
 .question {
   display: none;
   max-width: 500px;
@@ -363,9 +362,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
-/*  Styles */
+/* End Question Styles */
 
-/*  Styles */
+/* End Styles */
 .end {
   display: none;
   max-width: 400px;
@@ -420,9 +419,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
-/*  Styles */
+/* End Styles */
 
-/*  Styles */
+/* History Styles */
 .history {
   display: none;
 }
@@ -514,4 +513,4 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
-/*  Styles */
+/* End History Styles */
