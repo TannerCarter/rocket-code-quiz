@@ -28,6 +28,51 @@ const questions = [
     ],
     correctResponse: "booleans",
   },
+  {
+    question: "Arrays in javascript can be used to store ___.",
+    choices: [
+      {
+        id: "a",
+        value: "numbers and strings",
+      },
+      {
+        id: "b",
+        value: "other arrays",
+      },
+      {
+        id: "c",
+        value: "booleans",
+      },
+      {
+        id: "d",
+        value: "all of the above",
+      },
+    ],
+    correctResponse: "all of the above",
+  },
+  {
+    question:
+      "String values must be enclosed within ___ when being assigned to variables.",
+    choices: [
+      {
+        id: "a",
+        value: "commas",
+      },
+      {
+        id: "b",
+        value: "quotes",
+      },
+      {
+        id: "c",
+        value: "curly brackets",
+      },
+      {
+        id: "d",
+        value: "parenthesis",
+      },
+    ],
+    correctResponse: "quotes",
+  },
 ];
 
 function getHomePage() {
@@ -120,8 +165,13 @@ function nextQuestion() {
   } else {
     div = document.createElement("div");
     let p = document.createElement("p");
-    p.innerText = "No more questions";
+    p.innerText = "Your final score is";
+    let initial = document.createElement("p");
+    initial.innerText = "Please enter your initials";
+    let input = document.createElement("input");
     div.append(p);
+    div.append(input);
+    div.append(initial);
   }
   return div;
 }
