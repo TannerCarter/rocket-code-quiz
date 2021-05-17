@@ -1,3 +1,11 @@
+/*  Styles */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+/*  Styles */
 :root {
   --primary-color: white;
   --secondary-color: linear-gradient(
@@ -7,15 +15,18 @@
   );
   --grey-color: #d3d3d3;
 }
+/*  Styles */
 body {
   background: var(--secondary-color);
   margin: 0;
 }
+/*  Styles */
 .timer {
   font-weight: bold;
   border-bottom: 3px black solid;
   font-size: 20px;
 }
+/*  Styles */
 h1 {
   border-bottom: 3px dashed rgba(152, 152, 152, 1);
   font-size: 3em;
@@ -28,7 +39,7 @@ hr {
   height: 0;
   overflow: visible;
 }
-
+/*  Styles */
 pre {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
@@ -80,6 +91,7 @@ sup {
 img {
   border-style: none;
 }
+/*  Styles */
 button,
 input,
 optgroup,
@@ -125,7 +137,7 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
+/*  Styles */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
@@ -198,17 +210,11 @@ template {
   display: none;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  outline: none;
-}
-
 body,
 html {
   scroll-behavior: smooth;
 }
-
+/*  Styles */
 body {
   color: #1c1c1c;
   font-family: Arial, Helvetica, sans-serif;
@@ -218,7 +224,7 @@ a {
   color: #1c1c1c;
   text-decoration: none;
 }
-
+/*  Styles */
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -247,13 +253,17 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
+/*  Styles */
 
+/*  Styles */
 .container {
   max-width: 1140px;
   margin: 50px auto;
   padding: 10px 15px;
 }
+/*  Styles */
 
+/*  Styles */
 .start {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -295,7 +305,9 @@ header .score:hover {
   background: blue;
   cursor: pointer;
 }
+/*  Styles */
 
+/*  Styles */
 .question {
   display: none;
   max-width: 500px;
@@ -351,7 +363,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
+/*  Styles */
 
+/*  Styles */
 .end {
   display: none;
   max-width: 400px;
@@ -406,7 +420,9 @@ header .score:hover {
   font-weight: bold;
   background: blue;
 }
+/*  Styles */
 
+/*  Styles */
 .history {
   display: none;
 }
@@ -490,11 +506,12 @@ header .score:hover {
   margin-bottom: 10px;
 }
 
+.history-box .buttons button:nth-of-type(1) {
+  margin-right: 25px;
+}
+
 .history-box .buttons button:hover {
   font-weight: bold;
   background: blue;
 }
-
-.history-box .buttons button:nth-of-type(1) {
-  margin-right: 25px;
-}
+/*  Styles */
