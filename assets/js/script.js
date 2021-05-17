@@ -1,5 +1,23 @@
 const main = document.getElementById("main");
 
+let secondsLeft = 80;
+let scoresDiv = document.getElementById("score");
+let emptyArray = [];
+let storedArray = JSON.parse(window.localStorage.getItem("highScores"));
+
+function setTime() {
+  displayQuestions();
+  letTimeInterval = setInterval(function () {
+    secondLeft--;
+    timer.textContent = "";
+    timer.textContent = "Time: " + secondsLeft;
+    if (secondsLeft <= 0 || questionCount === questions.length) {
+      clearInterval(timerInterval);
+      captureUserScore();
+    }
+  }, 1000);
+}
+
 let score;
 let timer = 80;
 let questionNum = 0;

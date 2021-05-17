@@ -11,12 +11,49 @@
   </head>
   <body>
     <header>
-      <button class="highscore" id="score">View Highscores</button>
-      <div class="timer">Time: <span id="time-left">80</span></div>
+      <!-- Highscore and Timer Start -->
+      <button class="score" id="score">View Highscores</button>
+      <div class="timer">Time: <span id="time">80</span></div>
     </header>
-    <!-- Container Start -->
-    <div class="container" id="main"></div>
+    <!-- Highscore and Timer End -->
 
+    <!-- Container Start -->
+    <div class="container">
+      <div class="start" id="start">
+        <h1>Rocket Code Quiz</h1>
+        <p>
+          In order to become a developer for NASA, you must complete this quiz. </br>
+          If you answer incorrectly, a deduction of 10 seconds will take place upon your time to finish the quiz.
+        </p>
+
+        <button id="start-btn">Start</button>
+      </div>
+
+      <!-- Questions Start -->
+      <div class="question" id="question">
+        <div class="question-box">
+          <div class="title" id="question-title"></div>
+          <div class="question-btn" id="answer-btn"></div>
+        </div>
+      </div>
+      <!--Questions End -->
+
+      <!-- End of Questions Page Start -->
+      <div class="end" id="end">
+        <div class="title">Blast Off! You have completed the quiz and are ready for take off with NASA.</div>
+        <p>Your final score is <span id="final"></span></p>
+        <div class="input">
+          Enter initials: <input type="text" id="finalInput" />
+          <button id="finalSubmit">Submit</button>
+        </div>
+      </div>
+      <!-- End of Questions Page Start -->
+    </div>
+    <!-- Container End -->
+
+    <!-- Link to js file -->
     <script src="assets/js/script.js"></script>
+    <!-- Added Jquery Support  -->
+    <script src="js/jquery.js"></script>
   </body>
 </html>
